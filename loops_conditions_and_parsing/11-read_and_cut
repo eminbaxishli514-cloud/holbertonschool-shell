@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# This script displays the username, user ID, and login shell of each user
+# This script displays the username, user ID, and login shell for each user
 
 while read -r line
 do
