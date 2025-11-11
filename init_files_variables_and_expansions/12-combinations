@@ -1,12 +1,3 @@
 #!/bin/bash
-for a in {a..z}
-do
-for b in {a..z}
-do
-if [ $a$b != oo ]
-then
-echo $a$b
-fi
-done
-done
+echo {a..z}{a..z} | tr ' ' '\n' | grep -v oo
 
