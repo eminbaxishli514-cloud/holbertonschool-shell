@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# This script displays username, user ID, and home directory from /etc/passwd
-while IFS=: read -r user _ uid _ _ _ home _; do
-  echo "$user:$uid:$home"
+# This script displays username, user ID, and shell from /etc/passwd
+while IFS=: read -r user _ uid _ _ _ _ shell; do
+  echo "$user:$uid:$shell"
 done < /etc/passwd
