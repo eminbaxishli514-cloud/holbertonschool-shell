@@ -4,6 +4,6 @@
 
 # Use awk to group by IP and HTTP code and count occurrences
 awk '{count[$1,$9]++} 
-     END {for (key in count) print count[key], key}' /var/log/apache2/access.log | 
+     END {for (key in count) print count[key], key}' "$1" | 
 sort -nr | 
 awk '{print $1, $2, $3}'
