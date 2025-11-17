@@ -1,7 +1,6 @@
 #!/usr/bin/env bash
-# This script displays the username, user ID, and login shell for each user
 
-while read -r line
-do
-    echo "$line" | cut -d: -f1,3,7
+# Read /etc/passwd line by line
+while IFS=':' read -r username _ uid _ _ _ home; do
+    echo "User: $username, UID: $uid, Home: $home"
 done < /etc/passwd
