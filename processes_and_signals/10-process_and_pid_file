@@ -1,0 +1,31 @@
+#!/usr/bin/env bash
+# Handles PID file and signals for infinite loop script
+
+PIDFILE="/var/run/myscript.pid"
+echo "$$" > "$PIDFILE"
+
+# When receiving SIGTERM (kill)
+term_handler() {
+    echo "I hate the kill command"
+}
+
+# When receiving SIGINT (ctrl+c)
+int_handler() {
+    echo "Y U no love me?!"
+}
+
+# SIGQUIT or second SIGTERM → cleanup & exit
+quit_handler() {
+    rm -f "$PIDFILE"
+    exit 0
+}
+
+trap term_handler SIGTERM
+trap int_handler SIGINT
+trap quit_handler SIGQUIT
+
+# Infinity loop
+while true; do
+    echo "To infinity and beyond"
+    sleep 2
+done
