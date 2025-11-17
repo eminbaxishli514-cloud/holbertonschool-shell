@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
-# Count occurrences of "IP HTTP_CODE" pairs from Apache logs
+# Count occurrences of IP + status code from Apache logs
 
 awk '{print $1, $9}' apache-access.log \
-    | awk '{count[$0]++} END {for (c in count) print count[c], c}' \
+    | awk '{c[$0]++} END {for (i in c) print c[i], i}' \
     | sort -nr
